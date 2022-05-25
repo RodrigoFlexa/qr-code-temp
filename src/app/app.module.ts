@@ -16,7 +16,7 @@ import {MatTabsModule} from '@angular/material/tabs';
 import {MatCardModule} from '@angular/material/card';
 import {MatButtonModule} from '@angular/material/button';
 
-import { ZXingScannerModule } from '@zxing/ngx-scanner';
+
 
 
 
@@ -39,7 +39,6 @@ import { ZXingScannerModule } from '@zxing/ngx-scanner';
     MatCardModule,
     MatButtonModule,
     NgQrScannerModule,
-    ZXingScannerModule,
     ReactiveFormsModule,
   ],
   providers: [],
