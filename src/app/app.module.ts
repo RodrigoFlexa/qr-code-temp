@@ -2,7 +2,9 @@ import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { FormsModule, ReactiveFormsModule} from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
-import { NgQrScannerModule } from 'angular2-qrscanner';
+import { ZXingScannerModule } from '@zxing/ngx-scanner';
+
+
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -15,11 +17,7 @@ import {ClientDataComponent } from './views/home/client-data/client-data.compone
 import {MatTabsModule} from '@angular/material/tabs';
 import {MatCardModule} from '@angular/material/card';
 import {MatButtonModule} from '@angular/material/button';
-
-
-
-
-
+import { QrCodeService } from './qr-code.service';
 
 @NgModule({
   declarations: [
@@ -38,10 +36,9 @@ import {MatButtonModule} from '@angular/material/button';
     MatTabsModule,
     MatCardModule,
     MatButtonModule,
-    NgQrScannerModule,
-    ReactiveFormsModule,
+    ZXingScannerModule
   ],
-  providers: [],
+  providers: [QrCodeService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

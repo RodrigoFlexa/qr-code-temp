@@ -38,3 +38,15 @@ section {
     border-style: solid;
     border-color: #5d78ff;
 } 
+
+.example-spacer {
+  flex: 1 1 auto;
+}
+
+:host zxing-scanner::ng-deep {
+  border-style: solid;
+  border-color: #5d78ff;
+} 
+.example-spacer {
+flex: 1 1 auto;
+}

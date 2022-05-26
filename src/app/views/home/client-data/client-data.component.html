@@ -1,19 +1,34 @@
 <mat-tab-group mat-align-tabs="start" style="padding-top: 40px; padding-left:2% ; padding-right: 2%;">
     
-    <mat-tab label="Dados"> Dados do Cliente
+    <mat-tab label="Dados"> 
         <div fxLayout="row" fxLayoutAlign="start center" style="padding: 2%;">
             <div style="margin: 0.5%;">
                 <mat-card class="example-card">
-                    <mat-card-header>
-                     
-                    </mat-card-header>
-                    
+
                     <mat-card-content>
-                      <p>
+                        <div>
+                            <span><h2>ID:</h2></span>
+                            <span class="example-spacer"></span>
+                            <p>45</p>
+                        </div>  
                         
-                      </p>
+                        <div>
+                            <span><h2>Data Entrada:</h2></span>
+                            <span class="example-spacer"></span>
+                            <p>  45  </p>
+                        </div>  
+                        <div>
+                            <span><h2>Tempo No shopping:</h2></span>
+                            <span class="example-spacer"></span>
+                            <p>  45  </p>
+                        </div>  
+                        <div>
+                            <span><h2>Total a pagar:</h2></span>
+                            <span class="example-spacer"></span>
+                            <p>  5 R$ </p>
+                        </div>  
                     </mat-card-content>
-                    
+                    <button (click)= "getQrCodeById()" >Ckique aqui</button>
                 </mat-card>
 
             </div>
@@ -42,73 +57,31 @@
                         
                         <ul>
                             <li> 1 - Aproximar-se da catraca </li>
-                            <li> 2 - Clicar em Ler QR code </li>
+                            <li> 2 - Clicar na câmera abaixo </li>
                             <li> 3 - Ler o QR code mostrado no display da catraca </li>
-                        </ul>
-                        
-                        <p>
-                            Volte sempre!!!
-                        </p>
-                        
-                        <div class="example-button-row">
-                            <button mat-raised-button color="primary"> Ler QR code</button>
-                        </div>
-                
+                        </ul>                            
                     </mat-card-content>  
                 </mat-card>
             </div>
-        </div>
-       
-    </mat-tab>
-  </mat-tab-group>
-   <!-- 
-  <div class="row">
-    <div class="col-12 col-lg-6">
-        <div class="kt-portlet kt-portlet--tab">
-            <div class="kt-portlet__head">
-                <div class="kt-portlet__head-label">
-                    <span class="kt-portlet__head-icon kt-hide">
-                        <i class="la la-gear"></i>
-                    </span>
-                    <h3 class="kt-portlet__head-title">
-                        Acerca el código QR
-                    </h3>
-                </div>
-            </div>
-            <div class="kt-portlet__body">
-                <zxing-scanner *ngIf="scannerEnabled" #scanner (scanSuccess)="scanSuccessHandler($event)">
+        </div>   
+        <div>
+            <mat-card>
+                    <zxing-scanner 
+                (scanSuccess)="onCodeResult($event)">
                 </zxing-scanner>
-                <button (click)="enableScanner()" *ngIf="!scannerEnabled" type="button" class="btn btn-success">LEER
-                    OTRO</button>
-            </div>
+                    <p>
+                    <small>Scan Result</small>
+                    <strong>{{scanResult}}</strong>
+                    </p>
+            </mat-card>
         </div>
-    </div>
-
-    <div class="col-12 col-lg-6">
-        <div class="kt-portlet kt-callout kt-callout--info kt-callout--diagonal-bg scannedInfo">
-            <div class="kt-portlet__body">
-                <div class="kt-callout__body">
-                    <div class="kt-callout__content">
-                        <h3 class="kt-callout__title">Información sobre el folio</h3>
-                        <h3 class="kt-callout__desc">
-                            {{information}}
-                        </h3>
-
-                        <div class="alert alert-primary fade show" role="alert"
-                            *ngFor="let item of transports; let i = index">
-                            <div class="alert-icon"><i class="flaticon-truck"></i></div>
-                            <div class="alert-text">
-                                VEHÍCULO PLACAS: {{item.plates}}
-                                <br />
-                                CORTINA ASIGNADA: {{item.slot.name}}
-                                ({{item.slot.description}})
-                            </div>
-                        </div>
-
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
--->
-
+        <div>
+            <mat-card>
+                <mat-card-content>
+                    <h2>Obrigado, Volte Sempre!!!</h2>
+                </mat-card-content>
+            </mat-card>
+         </div>  
+    </mat-tab>
+        
+</mat-tab-group>

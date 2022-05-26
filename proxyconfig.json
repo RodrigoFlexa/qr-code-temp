@@ -1,0 +1,8 @@
+{
+    "/api/*": {
+       "target": "https://testecodbarras.juuzou123.repl.co/",
+       "secure": false,
+       "logLevel": "debug",
+       "changeOrigin": true
+    }
+  }
