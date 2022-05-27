@@ -47,6 +47,12 @@ section {
   border-style: solid;
   border-color: #5d78ff;
 } 
-.example-spacer {
-flex: 1 1 auto;
-}
+
+.flex-3 { 
+  display: flex; 
+  justify-content: space-between; 
+} 
+.flex-items { 
+ 
+  text-align: center; 
+} 

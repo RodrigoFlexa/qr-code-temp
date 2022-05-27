@@ -5,7 +5,7 @@ import { Observable, throwError } from 'rxjs';
 
 import { qrCode } from './qrCode';
 import { retry, catchError } from 'rxjs/operators';
-
+import { Utils } from './utils/Utils';
 @Injectable({
   providedIn: 'root'
 })
@@ -15,6 +15,7 @@ export class QrCodeService {
     constructor(private http: HttpClient) {}
     // Http Headers
 
+    Utils !: Utils;
   
     httpOptions = {
       headers: new HttpHeaders({
@@ -28,8 +29,7 @@ export class QrCodeService {
     // GET
     GetQrData(id: string): Observable<qrCode> {
       id = 'getDados=' + id;
-      json : JSON;
-      return this.http.get<any>(`https://testecodbarras.juuzou123.repl.co/${id}`);
+      return this.http.get<qrCode>(`https://testecodbarras.juuzou123.repl.co/${id}`);
     }
     // GET
 

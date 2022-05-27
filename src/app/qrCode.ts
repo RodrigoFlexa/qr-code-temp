@@ -5,4 +5,6 @@ export class qrCode {
     lidoEntrada!: string; 
     pago!: string;
     retorno!: boolean;
+
+    
 }

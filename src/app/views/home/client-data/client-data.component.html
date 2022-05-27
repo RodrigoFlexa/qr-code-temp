@@ -1,43 +1,81 @@
 <mat-tab-group mat-align-tabs="start" style="padding-top: 40px; padding-left:2% ; padding-right: 2%;">
     
     <mat-tab label="Dados"> 
-        <div fxLayout="row" fxLayoutAlign="start center" style="padding: 2%;">
+        <div fxLayout="row" fxLayoutAlign="space-between center" >
             <div style="margin: 0.5%;">
                 <mat-card class="example-card">
 
                     <mat-card-content>
+                        <div class=" flex-3 ">
+                            <div class="flex-items"><span style="font-size: 25px;" >ID: </span></div>
+                            <div class="flex-items"><label style="font-size: 20px;"> {{qrCode.iD}}</label></div>
+                        </div>
+                        <br>
+                        <br>
+                        <div class=" flex-3 ">
+                            <div class="flex-items"><span style="font-size: 25px;" >Data de Entrada: </span></div>
+                            <div class="flex-items"><label style="font-size: 20px;"> {{qrCode.dataEntrada}}</label></div>
+                        </div> 
+                        <br>
+                        <br>
                         <div>
-                            <span><h2>ID:</h2></span>
-                            <span class="example-spacer"></span>
-                            <p>45</p>
+                            <div class=" flex-3 ">
+                                <div class="flex-items"><span style="font-size: 25px;" >Tempo no Shopping </span></div>
+                                <div class="flex-items"><label style="font-size: 20px;"> 25 Minutos </label></div>
+                            </div> 
                         </div>  
-                        
+                        <br>
+                        <br>
                         <div>
-                            <span><h2>Data Entrada:</h2></span>
-                            <span class="example-spacer"></span>
-                            <p>  45  </p>
-                        </div>  
-                        <div>
-                            <span><h2>Tempo No shopping:</h2></span>
-                            <span class="example-spacer"></span>
-                            <p>  45  </p>
-                        </div>  
-                        <div>
-                            <span><h2>Total a pagar:</h2></span>
-                            <span class="example-spacer"></span>
-                            <p>  5 R$ </p>
-                        </div>  
+                            <div class=" flex-3 ">
+                                <div class="flex-items"><span style="font-size: 25px;" >Total a pagar </span></div>
+                                <div class="flex-items"><label style="font-size: 20px;"> 8,00 R$ </label></div>
+                            </div> 
+                        </div>   
                     </mat-card-content>
-                    <button (click)= "getQrCodeById()" >Ckique aqui</button>
                 </mat-card>
-
             </div>
         </div>
     
     </mat-tab>
-    <mat-tab label="Pagamento">Content 2
+    <mat-tab label="Pagamento">
+        <br>
+        <br>
+        <br>
+        <mat-card-title>Escolha a forma de pagamento: </mat-card-title>
+        <br>
+        <br>
         <mat-card-content>
-            
+            <mat-card>
+                <div class=" flex-3 ">
+                    <div class="flex-items"><span style="font-size: 25px;" >Pagamento Via pix:</span></div>
+                    <div class="flex-items"><button mat-raised-button color="primary">Pagar</button></div>
+                </div>
+            </mat-card>
+            <br>
+            <br>
+               <mat-card>
+                 <div class=" flex-3 ">
+                    <div class="flex-items"><span style="font-size: 25px;" >Transferência Bancária:</span></div>
+                    <div class="flex-items"><button mat-raised-button color="primary">Pagar</button></div>
+                 </div>
+               </mat-card>  
+            <br>
+            <br>
+            <mat-card>
+                <div class=" flex-3 ">
+                   <div class="flex-items"><span style="font-size: 25px;"> Boleto:</span></div>
+                   <div class="flex-items"><button mat-raised-button color="primary">Pagar</button></div>
+                </div>
+              </mat-card>  
+            <br>
+            <br>
+            <mat-card>
+                <div class=" flex-3 ">
+                   <div class="flex-items"><span style="font-size: 25px;"> Emq       dinheiro (Dirija-se ao caixa): </span></div>
+                   <div class="flex-items"><button mat-raised-button color="primary">Pagar</button></div>
+                </div>
+              </mat-card>  
         </mat-card-content>
     </mat-tab>
     
