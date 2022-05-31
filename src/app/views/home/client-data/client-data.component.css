@@ -52,6 +52,12 @@ section {
   display: flex; 
   justify-content: space-between; 
 } 
+
+.flex2 { 
+  display: flex; 
+  justify-content: space-around; 
+} 
+
 .flex-items { 
  
   text-align: center; 

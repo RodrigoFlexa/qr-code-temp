@@ -1,3 +1,12 @@
+<mat-toolbar color="basic">
+    <mat-toolbar-row style="font-size: 1.5em; height: 80px;">
+        <span>RedLine Park</span>
+        <span class="example-spacer"></span>
+        <mat-icon>help</mat-icon>
+    </mat-toolbar-row>
+  </mat-toolbar>
+  <br>
+
 <mat-tab-group mat-align-tabs="start" style="padding-top: 40px; padding-left:2% ; padding-right: 2%;">
     
     <mat-tab label="Dados"> 
@@ -21,7 +30,11 @@
                         <div>
                             <div class=" flex-3 ">
                                 <div class="flex-items"><span style="font-size: 25px;" >Tempo no Shopping </span></div>
-                                <div class="flex-items"><label style="font-size: 20px;"> 25 Minutos </label></div>
+                                <div class=" flex-3">
+                                    <div style="font-size: 20px;">{{ hours | number:'2.0'}}<span>:</span></div>
+                                    <div style="font-size: 20px;">{{ minutes | number:'2.0'}}<span>:</span></div>
+                                    <div style="font-size: 20px;">{{ seconds | number:'2.0'}}<span></span></div>
+                                </div>
                             </div> 
                         </div>  
                         <br>
@@ -31,7 +44,7 @@
                                 <div class="flex-items"><span style="font-size: 25px;" >Total a pagar </span></div>
                                 <div class="flex-items"><label style="font-size: 20px;"> 8,00 R$ </label></div>
                             </div> 
-                        </div>   
+                        </div>    
                     </mat-card-content>
                 </mat-card>
             </div>
