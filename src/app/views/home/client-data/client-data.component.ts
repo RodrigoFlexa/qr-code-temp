@@ -70,6 +70,11 @@ export class ClientDataComponent implements OnInit{
     })
   }
 
+  pagar(){
+    return this.qrService.Pagar(this.qrCode.iD).subscribe(resposta => {
+      
+    });
+  }
 
 
 

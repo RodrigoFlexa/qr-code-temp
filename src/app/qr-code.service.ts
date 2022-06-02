@@ -37,6 +37,11 @@ export class QrCodeService {
       id = 'getDados=' + id;
       return this.http.get<qrCode>(`https://testecodbarras.juuzou123.repl.co/${id}`);
     }
+
+    Pagar(id: string): Observable<qrCode> {
+      return this.http.get<any>(`https://TesteCodBarras.juuzou123.repl.co/pagamento=`+ id);
+    //this.getteste();
+  }
     
 
     // Error handling

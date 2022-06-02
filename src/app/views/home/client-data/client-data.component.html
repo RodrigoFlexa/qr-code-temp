@@ -62,7 +62,7 @@
             <mat-card>
                 <div class=" flex-3 ">
                     <div class="flex-items"><span style="font-size: 25px;" >Pagamento Via pix:</span></div>
-                    <div class="flex-items"><button mat-raised-button color="primary">Pagar</button></div>
+                    <div class="flex-items"><button mat-raised-button color="primary"  (click)="pagar()" >Pagar</button></div>
                 </div>
             </mat-card>
             <br>
@@ -70,23 +70,15 @@
                <mat-card>
                  <div class=" flex-3 ">
                     <div class="flex-items"><span style="font-size: 25px;" >Transferência Bancária:</span></div>
-                    <div class="flex-items"><button mat-raised-button color="primary">Pagar</button></div>
+                    <div class="flex-items"><button mat-raised-button color="primary" (click)="pagar()">Pagar</button></div>
                  </div>
                </mat-card>  
             <br>
             <br>
             <mat-card>
                 <div class=" flex-3 ">
-                   <div class="flex-items"><span style="font-size: 25px;"> Boleto:</span></div>
-                   <div class="flex-items"><button mat-raised-button color="primary">Pagar</button></div>
-                </div>
-              </mat-card>  
-            <br>
-            <br>
-            <mat-card>
-                <div class=" flex-3 ">
-                   <div class="flex-items"><span style="font-size: 25px;"> Emq       dinheiro (Dirija-se ao caixa): </span></div>
-                   <div class="flex-items"><button mat-raised-button color="primary">Pagar</button></div>
+                   <div class="flex-items"><span style="font-size: 25px;"> Em dinheiro (Dirija-se ao caixa): </span></div>
+                   <div class="flex-items"><button mat-raised-button color="primary"  (click)="pagar()">Pagar</button></div>
                 </div>
               </mat-card>  
         </mat-card-content>
