@@ -71,16 +71,10 @@ export class ClientDataComponent implements OnInit{
   }
 
   pagar(){
+    alert("Pagamento realizado com sucesso para o ID:" + this.qrCode.iD + "! \n" + "Dirija-se para a aba de saída")
     return this.qrService.Pagar(this.qrCode.iD).subscribe(resposta => {
-      
     });
   }
-
-
-
-
-
-
   //utils da página **************************************************************************************
 
   //tratamento de datas vindas da API
