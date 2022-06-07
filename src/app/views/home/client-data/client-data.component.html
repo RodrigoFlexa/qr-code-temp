@@ -10,6 +10,9 @@
 <mat-tab-group mat-align-tabs="start" style="padding-top: 40px; padding-left:2% ; padding-right: 2%;">
     
     <mat-tab label="Dados"> 
+        <br>
+        <br>
+        <br>
         <div fxLayout="row" fxLayoutAlign="space-between center" >
             <div style="margin: 0.5%;" >
                 <mat-card class="example-card">
@@ -46,6 +49,7 @@
                                 <div class="flex-items"><label style="font-size: 20px;"> R$ 8,00 </label></div>
                             </div> 
                         </div>    
+                        <label>{{qrCode.pago}}</label>
                     </mat-card-content>
                 </mat-card>
             </div>
@@ -86,7 +90,7 @@
     </mat-tab>
     
     
-    <mat-tab label="Saída">
+    <mat-tab label="Saída" [disabled]="Naolibera">
         <div fxLayout="row" fxLayoutAlign="start center" style="padding: 2%;">
             <div style="margin: 0.5%;">
                 <mat-card class="example-card">

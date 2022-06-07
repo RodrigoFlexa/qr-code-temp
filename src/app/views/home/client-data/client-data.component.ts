@@ -25,6 +25,7 @@ export class ClientDataComponent implements OnInit{
     qrCode : any;
     iD !: string; 
 
+    public Naolibera = true;
     //Agora
     public agora =  new Date();
     public horaAgora = this.agora.getHours();
@@ -59,6 +60,7 @@ export class ClientDataComponent implements OnInit{
     this.minutoEntrada = this.getMinutos(this.qrCode.dataEntrada);    
     this.diferenca();
     this.start();
+    this.verificaPagamento();
   }
   //Resultado do scaneamento
   onCodeResult(result:string){
@@ -86,6 +88,7 @@ export class ClientDataComponent implements OnInit{
 
     pagar(){
       alert("Pagamento realizado com sucesso para o ID:" + this.qrCode.iD + "! \n" + "Dirija-se para a aba de saída")
+      this.Naolibera = false;
       return this.qrService.Pagar(this.qrCode.iD).subscribe(resposta => {
       });
     }
@@ -145,6 +148,12 @@ export class ClientDataComponent implements OnInit{
     }
   }
 
+  //
+  verificaPagamento(){
+    if(this.qrCode.pago == 1){
+      this.Naolibera = false;
+    }
+  }
 
 
 //timer:
