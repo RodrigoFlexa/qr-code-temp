@@ -62,3 +62,7 @@ section {
  
   text-align: center; 
 } 
+
+.mat-card-content{
+  padding:15px ;
+}
