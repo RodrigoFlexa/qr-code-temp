@@ -8,11 +8,11 @@ import { retry, catchError } from 'rxjs/operators';
 
 @Injectable({
   providedIn: 'root'
-})
+})  
 
 export class QrCodeService {
   saidaUrl:any;
-
+  loading = false;
     constructor(private http: HttpClient) {}
     // Http Headers
 
@@ -34,8 +34,9 @@ export class QrCodeService {
 
     // GET
     GetQrData(id: string){
+      this.loading = true;
       id = 'getDados=' + id;
-      return this.http.get<qrCode>(`https://testecodbarras.juuzou123.repl.co/${id}`).toPromise().then();
+      return this.http.get<qrCode>(`https://testecodbarras.juuzou123.repl.co/${id}`).toPromise().then().finally(() => this.loading = false);
     }
 
     Pagar(id: string): Observable<qrCode> {

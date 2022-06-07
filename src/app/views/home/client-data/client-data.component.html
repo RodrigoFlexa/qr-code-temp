@@ -1,4 +1,4 @@
-<mat-toolbar color="basic">
+<mat-toolbar color="primary">
     <mat-toolbar-row style="font-size: 1.5em; height: 80px;">
         <span>RedLine Park</span>
         <span class="example-spacer"></span>
@@ -13,17 +13,18 @@
         <div fxLayout="row" fxLayoutAlign="space-between center" >
             <div style="margin: 0.5%;">
                 <mat-card class="example-card">
-
                     <mat-card-content>
                         <div class=" flex-3 ">
                             <div class="flex-items"><span style="font-size: 25px;" >ID: </span></div>
                             <div class="flex-items"><label style="font-size: 20px;"> {{qrCode.iD}}</label></div>
+                            <mat-spinner *ngIf="qrService.loading" [diameter]="40"></mat-spinner>
                         </div>
                         <br>
                         <br>
                         <div class=" flex-3 ">
                             <div class="flex-items"><span style="font-size: 25px;" >Data de Entrada: </span></div>
                             <div class="flex-items"><label style="font-size: 20px;"> {{qrCode.dataEntrada}}</label></div>
+                            <mat-spinner *ngIf="qrService.loading" [diameter]="40"></mat-spinner>
                         </div> 
                         <br>
                         <br>

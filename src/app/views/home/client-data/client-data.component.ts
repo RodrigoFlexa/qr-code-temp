@@ -42,7 +42,7 @@ export class ClientDataComponent implements OnInit{
     private timer: any;
     private date = new Date();
   
-  constructor(private qrService : QrCodeService ,  private activatedRoute: ActivatedRoute){
+  constructor(public qrService : QrCodeService ,  private activatedRoute: ActivatedRoute){
   }
 
   async ngOnInit(): Promise<void> {

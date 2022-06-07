@@ -16,7 +16,7 @@ import {MatTabsModule} from '@angular/material/tabs';
 import {MatCardModule} from '@angular/material/card';
 import {MatButtonModule} from '@angular/material/button';
 import { QrCodeService } from './qr-code.service';
-
+import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
 
 
 @NgModule({
@@ -36,7 +36,8 @@ import { QrCodeService } from './qr-code.service';
     MatTabsModule,
     MatCardModule,
     MatButtonModule,
-    ZXingScannerModule
+    ZXingScannerModule,
+    MatProgressSpinnerModule
   ],
   providers: [QrCodeService],
   bootstrap: [AppComponent]
