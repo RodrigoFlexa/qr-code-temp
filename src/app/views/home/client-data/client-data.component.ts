@@ -5,7 +5,7 @@ import { qrCode } from 'src/app/qrCode';
 
 
 import { ActivatedRoute } from '@angular/router';
-import { cron } from 'src/app/utils/cron';
+
 
 @Component({
   selector: 'app-client-data',
@@ -17,33 +17,47 @@ export class ClientDataComponent implements OnInit{
 
   @ViewChild("idAudio") idAudio!: ElementRef ;
   
-  //scanner
-  scanResult: any='';
+    //scanner
+    scanResult: any='';
 
-  //qr code API data get
-  qrCode !: qrCode;
-  iD !: string; 
+    //qr code API data get
+    // qrCode !: qrCode;
+    qrCode : any;
+    iD !: string; 
 
-  //timer
-  public hours: number = 0;
-  public minutes: number = 0;
-  public seconds: number = 0;
-  private timer: any;
-  private date = new Date();
+    //Agora
+    public agora =  new Date();
+    public horaAgora = this.agora.getHours();
+    public minutoAgora = this.agora.getMinutes();
+
+    //dadosEntrada
+    public horaEntrada !: number;
+    public minutoEntrada !: number;
+    public dataEntrada = new Date();
+
+    //timer
+    public hours: number = 0;
+    public minutes: number = 0;
+    public seconds: number = 0;
+    private timer: any;
+    private date = new Date();
   
-  public show: boolean = true;
-  public disabled: boolean = false;
-  public animate: boolean = false;
-
   constructor(private qrService : QrCodeService ,  private activatedRoute: ActivatedRoute){
   }
 
-
-  ngOnInit(): void {
+  async ngOnInit(): Promise<void> {
     const par : string =  this.activatedRoute.snapshot.paramMap.get('id') as string;
+   
     this.iD  =  par;
-    this.qrCode = new qrCode();
-    this.getQrCodeById(this.iD);
+    this.qrCode = {};
+    
+    await this.getQrCodeById(this.iD);
+
+    console.log(this.qrCode);
+
+    this.horaEntrada = this.getHoras(this.qrCode.dataEntrada);
+    this.minutoEntrada = this.getMinutos(this.qrCode.dataEntrada);    
+    this.diferenca();
     this.start();
   }
   //Resultado do scaneamento
@@ -59,37 +73,77 @@ export class ClientDataComponent implements OnInit{
     }
   }
 
-  getQrCodeById(MeuId: string){
-    return this.qrService.GetQrData(MeuId).subscribe(resposta => {
+  async getQrCodeById(MeuId: string){
+    let resposta : any = await this.qrService.GetQrData(MeuId).then()
       this.qrCode.dataEntrada = this.trataDatas(resposta.dataEntrada);
       this.qrCode.dataPagamento = this.trataDatas(resposta.dataPagamento);
       this.qrCode.iD = resposta.iD;
       this.qrCode.lidoEntrada = resposta.lidoEntrada;
       this.qrCode.pago = resposta.pago;
       this.qrCode.retorno = resposta.retorno;
-    })
+      console.log(this.qrCode);
   }
 
-  pagar(){
-    alert("Pagamento realizado com sucesso para o ID:" + this.qrCode.iD + "! \n" + "Dirija-se para a aba de saída")
-    return this.qrService.Pagar(this.qrCode.iD).subscribe(resposta => {
-    });
-  }
+    pagar(){
+      alert("Pagamento realizado com sucesso para o ID:" + this.qrCode.iD + "! \n" + "Dirija-se para a aba de saída")
+      return this.qrService.Pagar(this.qrCode.iD).subscribe(resposta => {
+      });
+    }
   //utils da página **************************************************************************************
 
   //tratamento de datas vindas da API
 
-  trataDatas(dataA:string){
-    let dataNova : string;
-    let dataAntiga = dataA;
-    let ano = dataAntiga.substring(0,4);
-    let mes = dataAntiga.substring(4,6);
-    let dia = dataAntiga.substring(6,8);
-    let hora = dataAntiga.substring(8,10);
-    let minutos = dataAntiga.substring(10,12);
-    dataNova = dia + "/" + mes  + "/" + ano + " " + hora + ":" + minutos;
-    return dataNova;
-}
+    trataDatas(dataA:string){
+      let dataNova : string;
+      let dataAntiga = dataA;
+      let ano = dataAntiga.substring(0,4);
+      let mes = dataAntiga.substring(4,6);
+      let dia = dataAntiga.substring(6,8);
+      let hora = dataAntiga.substring(8,10);
+      let minutos = dataAntiga.substring(10,12);
+      dataNova = dia + "/" + mes  + "/" + ano + " " + hora + ":" + minutos;
+      return dataNova;
+  }
+
+  getHoras(dataA:string) : number {
+    let horas = parseInt(dataA.substring(11,13));
+    return horas;
+  }
+
+  getMinutos(dataA:string) : number {
+    let minutos = parseInt(dataA.substring(14,16));
+    return minutos;
+  }
+
+  diferenca(){
+    this.dataEntrada.setHours(this.getHoras(this.qrCode.dataEntrada));
+    this.dataEntrada.setMinutes(this.getMinutos(this.qrCode.dataEntrada));
+    console.log(this.dataEntrada);
+    console.log(this.agora);
+
+    let diff = Math.abs(this.agora.getTime() - this.dataEntrada.getTime());
+    
+    let diffMin = diff / 1000 / 60 ;
+   
+    let horas = 0 
+    let minutos = 0;
+
+    if(diffMin < 60){
+      this.hours = 0;
+      this.minutes = diffMin;
+    }
+    else if(diffMin > 60){
+      while(diffMin > 60){
+        diffMin = diffMin - 60;
+        horas = horas + 1;
+      }
+      this.hours = horas;
+      this.minutes = diffMin;
+    }else{
+      this.hours = 1;
+      this.minutes = 0;
+    }
+  }
 
 
 
@@ -110,8 +164,6 @@ export class ClientDataComponent implements OnInit{
   start() {
     if (this.hours >= 0 || this.minutes >= 0 || this.seconds >= 0) {
 
-      this.disabled = true;
-      this.show = false;  //hide btn + and -
       this.updateTimer();
 
       if(this.seconds >= 0){
@@ -119,13 +171,4 @@ export class ClientDataComponent implements OnInit{
       }     
     }
   }
-  stop() {    
-    this.disabled = false;
-    this.show = true;
-    this.animate = false;
-    clearInterval(this.timer);
-    this.idAudio.nativeElement.load();
-  }
 }
-
-  

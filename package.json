@@ -33,6 +33,7 @@
     "@zxing/ngx-scanner": "^3.5.0",
     "angular2-qrscanner": "^1.0.7",
     "express": "^4.18.1",
+    "moment": "^2.29.3",
     "ng2-qrcode-reader": "0.0.1",
     "ngx-scanner-qrcode": "^1.0.17",
     "react": "^18.1.0",

@@ -33,9 +33,9 @@ export class QrCodeService {
     }
 
     // GET
-    GetQrData(id: string): Observable<qrCode> {
+    GetQrData(id: string){
       id = 'getDados=' + id;
-      return this.http.get<qrCode>(`https://testecodbarras.juuzou123.repl.co/${id}`);
+      return this.http.get<qrCode>(`https://testecodbarras.juuzou123.repl.co/${id}`).toPromise().then();
     }
 
     Pagar(id: string): Observable<qrCode> {

@@ -5,7 +5,6 @@ import { HttpClientModule } from '@angular/common/http';
 import { ZXingScannerModule } from '@zxing/ngx-scanner';
 
 
-
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
@@ -17,6 +16,7 @@ import {MatTabsModule} from '@angular/material/tabs';
 import {MatCardModule} from '@angular/material/card';
 import {MatButtonModule} from '@angular/material/button';
 import { QrCodeService } from './qr-code.service';
+
 
 
 @NgModule({
